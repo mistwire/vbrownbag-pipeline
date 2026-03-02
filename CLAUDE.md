@@ -39,11 +39,16 @@ Phase 1 — Foundations & Project Structure (in progress)
 
 (update this as folders are added — explain what each one is for)
 
-- `main.py` — entry point (will be replaced with proper structure in Phase 2)
+- `main.py` — entry point, starts the server and registers routers
 - `pyproject.toml` — project manifest and dependencies
 - `uv.lock` — pinned dependency versions, always commit this
 - `.env.example` — template for required environment variables, commit this
 - `.env` — actual secrets, never commit this
+- `app/` — the application package
+  - `api/` — HTTP routes only, no business logic
+    - `routes.py` — main router
+  - `services/` — business logic (coming in Phase 4)
+  - `agents/` — LLM agents (coming in Phase 5)
 
 ## Conventions
 

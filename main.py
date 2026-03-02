@@ -1,6 +1,7 @@
-def main():
-    print("Hello from vbrownbag-pipeline!")
+from fastapi import FastAPI
+from app.api.routes import router
 
+app = FastAPI()
 
-if __name__ == "__main__":
-    main()
+# Register the router — plug the subnet into the main network
+app.include_router(router)
