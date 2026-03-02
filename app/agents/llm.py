@@ -18,5 +18,8 @@ def generate_video_description(title: str) -> str:
         ]
     )
 
-    # The response content is a list - get the 1st items text
-    return message.content[0].text
+    # The response content is a list of blocks (TextBlock, ThinkingBlock, etc.)
+    # We cast to TextBlock so the type checker knows .text is valid here
+    first_block = message.content[0]
+    assert isinstance(first_block, anthropic.types.TextBlock)
+    return first_block.text
