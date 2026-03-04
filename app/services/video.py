@@ -1,5 +1,5 @@
-from app.agents.llm import generate_video_description
-
+from app.agents.description import generate_video_description
+from app.agents.tags import generate_video_tags
 
 def process_video(title: str) -> dict:
     """
@@ -9,7 +9,12 @@ def process_video(title: str) -> dict:
     """
     try:
         description = generate_video_description(title)
+        tags = generate_video_tags(title, description)
+        return {"title": title, "description": description, "tags": tags}
 
-        return {"title": title, "description": description}
     except ValueError as e:
-        return {"title:": title, "error": f"Something bad happened: {e}"}
+        return {"title": title, "error": f"Something bad happened: {e}"}
+
+    
+   
+        
