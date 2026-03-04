@@ -1,4 +1,3 @@
-import os
 import anthropic
 
 # init the client - reads API key automatically
