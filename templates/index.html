@@ -16,17 +16,21 @@
 
     <!-- Only show results section if result exists -->
     {% if result %}
-        <h2>Results for: {{ result.title }}</h2>
+        {% if result.error %}
+            <h2>Error: {{ result.error }}</h2>
+        {% else %}
+            <h2>Results for: {{ result.title }}</h2>
 
-        <h3>Description</h3>
-        <p>{{ result.description }}</p>
+            <h3>Description</h3>
+            <p>{{ result.description }}</p>
 
-        <h3>Tags</h3>
-        <p>{{ result.tags | join(", ") }}</p>
+            <h3>Tags</h3>
+            <p>{{ result.tags | join(", ") }}</p>
 
-        <h3>LinkedIn Post</h3>
-        <p>{{ result.linkedin_post }}</p>
+            <h3>LinkedIn Post</h3>
+            <p>{{ result.linkedin_post }}</p>
+        {% endif %}
     {% endif %}
-
+        
 </body>
 </html>
