@@ -6,6 +6,27 @@
 </head>
 <body>
     <h1>vBrownBag Pipeline</h1>
-    <p>Status: {{ status }}</p>
+
+    <!-- Form submits a POST request to /process-form -->
+    <form action="/process-form" method="post">
+        <label for="title">Video Title:</label>
+        <input type="text" id="title" name="title" placeholder="Enter video title">
+        <button type="submit">Generate</button>
+    </form>
+
+    <!-- Only show results section if result exists -->
+    {% if result %}
+        <h2>Results for: {{ result.title }}</h2>
+
+        <h3>Description</h3>
+        <p>{{ result.description }}</p>
+
+        <h3>Tags</h3>
+        <p>{{ result.tags | join(", ") }}</p>
+
+        <h3>LinkedIn Post</h3>
+        <p>{{ result.linkedin_post }}</p>
+    {% endif %}
+
 </body>
 </html>
